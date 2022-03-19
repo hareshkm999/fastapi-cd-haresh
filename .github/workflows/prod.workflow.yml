@@ -21,20 +21,20 @@ jobs:
     - name: Login to Azure Container Registry
       uses: azure/docker-login@v1
       with:
-        login-server: fastapicd.azurecr.io
+        login-server: fastapicdharesh.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
      
     - name: Build and push container image to registry 
       run: |
-        docker build . -t fastapicd.azurecr.io/fastapi-cd:${{ github.sha }}
-        docker push fastapicd.azurecr.io/fastapi-cd:${{ github.sha }}
+        docker build . -t fastapicdharesh.azurecr.io/fastapi-cd-haresh:${{ github.sha }}
+        docker push fastapicdharesh.azurecr.io/fastapi-cd-haresh:${{ github.sha }}
 
     - name: Deploy to App Service
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'fastapi-cd'
-        images: 'fastapicd.azurecr.io/fastapi-cd:${{ github.sha }}'
+        images: 'fastapicdharesh.azurecr.io/fastapi-cd-haresh:${{ github.sha }}'
         slot-name: 'staging'
 
     - name: Azure logout
