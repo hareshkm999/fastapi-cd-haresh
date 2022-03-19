@@ -35,7 +35,7 @@ jobs:
       with:
         app-name: 'fastapi-cd'
         images: 'fastapicdharesh.azurecr.io/fastapi-cd-haresh:${{ github.sha }}'
-        slot-name: 'staging'
+        slot-name: 'PRODUCTION'
 
     - name: Azure logout
       run: |
